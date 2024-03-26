@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularApex.API", "AngularApex.API\AngularApex.API.csproj", "{6720F837-69FF-4F2E-A54D-70DC046BF2C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApex.API", "AngularApex.API\AngularApex.API.csproj", "{6720F837-69FF-4F2E-A54D-70DC046BF2C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularApex.Services", "AngularApex.Services\AngularApex.Services.csproj", "{158D6851-D477-4B14-BDD8-46B333D49B0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApex.Services", "AngularApex.Services\AngularApex.Services.csproj", "{158D6851-D477-4B14-BDD8-46B333D49B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularApex.Data", "AngularApex.Data\AngularApex.Data.csproj", "{E374FC97-D60E-4B13-BF62-C2346921739D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApex.Data", "AngularApex.Data\AngularApex.Data.csproj", "{E374FC97-D60E-4B13-BF62-C2346921739D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
