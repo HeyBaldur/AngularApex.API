@@ -1,11 +1,14 @@
 ﻿using AngularApex.Data;
+using AngularApex.Data.Data;
 using AngularApex.Data.DTOs;
 using AngularApex.Data.Models;
+using AngularApex.Services.JWT;
 using AngularApex.Services.PasswordHandler;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AngularApex.Services.Services
@@ -15,14 +18,38 @@ namespace AngularApex.Services.Services
         private readonly IMapper _mapper;
         private readonly DataContext _dataContext;
         private readonly ILogger<IdentityService> _logger;
+        private readonly ITokenHandler _tokenHandler;
         public IdentityService(
             IMapper mapper,
             DataContext dataContext,
-            ILogger<IdentityService> logger)
+            ILogger<IdentityService> logger,
+            ITokenHandler tokenHandler)
         {
             _mapper = mapper;
             _dataContext = dataContext;
             _logger = logger;
+            _tokenHandler = tokenHandler;
+        }
+
+        public async Task<string> LoginUserAsync(LoginUserModel model)
+        {
+            // Validate if user exists in the DB.
+            RegisterUserModel user = await _dataContext.UserAccounts
+                .Where(x => x.Email == model.Email)
+                .FirstOrDefaultAsync();
+
+            // Validate password
+            if (!PasswordHash.VerifyPassword(model.Password, user.PasswordHash, user.PasswordSalt))
+            {
+                _logger.LogError($"Could not get access token because credentials do not match");
+                throw new Exception("Credentials do not match");
+            }
+
+            // Return token
+            _logger.LogInformation("Generate access token");
+            return _tokenHandler.GenerateToken(
+                user.Id,
+                user.Email);
         }
 
         public async Task<UserAccountDto> RegisterUserAsync(RegisterUserModel model)

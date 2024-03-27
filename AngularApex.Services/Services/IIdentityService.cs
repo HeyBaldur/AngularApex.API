@@ -1,4 +1,5 @@
-﻿using AngularApex.Data.DTOs;
+﻿using AngularApex.Data.Data;
+using AngularApex.Data.DTOs;
 using AngularApex.Data.Models;
 using System.Threading.Tasks;
 
@@ -12,5 +13,12 @@ namespace AngularApex.Services.Services
         /// <param name="model"></param>
         /// <returns></returns>
         Task<UserAccountDto> RegisterUserAsync(RegisterUserModel model);
+
+        /// <summary>
+        /// Log in a user.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<string> LoginUserAsync(LoginUserModel model);
     }
 }

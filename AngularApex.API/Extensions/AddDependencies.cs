@@ -1,4 +1,5 @@
-﻿using AngularApex.Services.Services;
+﻿using AngularApex.Services.JWT;
+using AngularApex.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AngularApex.API.Extensions
@@ -16,6 +17,7 @@ namespace AngularApex.API.Extensions
         public static IServiceCollection Dependencies(this IServiceCollection services)
         {
             services.AddScoped<IIdentityService, IdentityService>();
+            services.AddScoped<ITokenHandler, TokenHandler>();
             return services;
         }
     }

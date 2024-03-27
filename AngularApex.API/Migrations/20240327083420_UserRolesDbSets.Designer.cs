@@ -4,14 +4,16 @@ using AngularApex.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AngularApex.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240327083420_UserRolesDbSets")]
+    partial class UserRolesDbSets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,14 +56,9 @@ namespace AngularApex.API.Migrations
                     b.Property<int>("UserModelId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserRoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserModelId");
-
-                    b.HasIndex("UserRoleId");
 
                     b.ToTable("UserRoleAssigments");
                 });
@@ -141,15 +138,7 @@ namespace AngularApex.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AngularApex.Data.Data.UserRolesModel", "UserRole")
-                        .WithMany()
-                        .HasForeignKey("UserRoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("UserModel");
-
-                    b.Navigation("UserRole");
                 });
 #pragma warning restore 612, 618
         }
