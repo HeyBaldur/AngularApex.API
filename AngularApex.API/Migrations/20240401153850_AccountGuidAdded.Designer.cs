@@ -4,14 +4,16 @@ using AngularApex.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AngularApex.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240401153850_AccountGuidAdded")]
+    partial class AccountGuidAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,9 +95,6 @@ namespace AngularApex.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CreatedById")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("Identificator")
                         .HasColumnType("uniqueidentifier");
 
@@ -104,8 +103,6 @@ namespace AngularApex.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
 
                     b.ToTable("Accounts");
                 });
@@ -534,6 +531,9 @@ namespace AngularApex.API.Migrations
                     b.Property<Guid>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AccountsAssigned")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -594,17 +594,6 @@ namespace AngularApex.API.Migrations
                     b.Navigation("UserModel");
 
                     b.Navigation("UserRole");
-                });
-
-            modelBuilder.Entity("AngularApex.Data.Models.Account", b =>
-                {
-                    b.HasOne("AngularApex.Data.Models.RegisterUserModel", "CreatedBy")
-                        .WithMany("AccountsAssigned")
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("AngularApex.Data.Models.Activity", b =>
@@ -777,11 +766,6 @@ namespace AngularApex.API.Migrations
             modelBuilder.Entity("AngularApex.Data.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("AngularApex.Data.Models.RegisterUserModel", b =>
-                {
-                    b.Navigation("AccountsAssigned");
                 });
 #pragma warning restore 612, 618
         }

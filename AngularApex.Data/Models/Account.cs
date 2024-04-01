@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AngularApex.Data.Models
 {
@@ -10,6 +11,8 @@ namespace AngularApex.Data.Models
         public string Name { get; set; }
 
         [Required]
-        public string Identificator { get; set; }
+        public Guid Identificator { get; set; }
+        public int CreatedById { get; set; }
+        public virtual RegisterUserModel CreatedBy { get; set; }
     }
 }

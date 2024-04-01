@@ -1,6 +1,6 @@
 ﻿using AngularApex.Data.Data;
 using AngularApex.Data.Models;
-using AngularApex.Services.Services;
+using AngularApex.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

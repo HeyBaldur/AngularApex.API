@@ -2,6 +2,7 @@
 using AngularApex.Data.Data;
 using AngularApex.Data.DTOs;
 using AngularApex.Data.Models;
+using AngularApex.Services.Interfaces;
 using AngularApex.Services.JWT;
 using AngularApex.Services.PasswordHandler;
 using AutoMapper;
@@ -15,6 +16,11 @@ namespace AngularApex.Services.Services
 {
     public class IdentityService : IIdentityService
     {
+        /**
+         * A readonly field can't be assigned after the constructor exits. 
+         * This rule has different implications for value types and reference types.
+         * To learn more https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/readonly
+         */
         private readonly IMapper _mapper;
         private readonly DataContext _dataContext;
         private readonly ILogger<IdentityService> _logger;
