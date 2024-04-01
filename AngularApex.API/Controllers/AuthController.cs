@@ -36,7 +36,7 @@ namespace AngularApex.API.Controllers
             Description = "Register a new user",
             Summary = "Create account")]
         [HttpPost]
-        public async Task<IActionResult> SignUp(RegisterUserModel model)
+        public async Task<IActionResult> CreateAccount(RegisterUserModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace AngularApex.API.Controllers
             Description = "Log in a new user",
             Summary = "Get access token")]
         [HttpPost("token")]
-        public async Task<IActionResult> SignIn(LoginUserModel model)
+        public async Task<IActionResult> GetAccessToken(LoginUserModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -66,8 +66,7 @@ namespace AngularApex.API.Controllers
             }
             else
             {
-                var result = await _identityService.LoginUserAsync(model);
-                return Ok(result);
+                return Ok(await _identityService.LoginUserAsync(model));
             }
         }
     }

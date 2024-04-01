@@ -19,6 +19,6 @@ namespace AngularApex.Services.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<string> LoginUserAsync(LoginUserModel model);
+        Task<TokenDto> LoginUserAsync(LoginUserModel model);
     }
 }

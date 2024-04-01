@@ -31,7 +31,7 @@ namespace AngularApex.Services.Services
             _tokenHandler = tokenHandler;
         }
 
-        public async Task<string> LoginUserAsync(LoginUserModel model)
+        public async Task<TokenDto> LoginUserAsync(LoginUserModel model)
         {
             // Validate if user exists in the DB.
             RegisterUserModel user = await _dataContext.UserAccounts
@@ -47,9 +47,15 @@ namespace AngularApex.Services.Services
 
             // Return token
             _logger.LogInformation("Generate access token");
-            return _tokenHandler.GenerateToken(
+            var token = _tokenHandler.GenerateToken(
                 user.Id,
                 user.Email);
+
+            // Return token object
+            return new TokenDto
+            {
+                Token = token,
+            };
         }
 
         public async Task<UserAccountDto> RegisterUserAsync(RegisterUserModel model)
