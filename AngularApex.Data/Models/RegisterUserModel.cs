@@ -21,10 +21,14 @@ namespace AngularApex.Data.Models
         public byte[] PasswordSalt { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime LastUpdated { get; set; }
+        public Guid AccountId { get; set; }
+        public Guid License { get; set; }
 
         public RegisterUserModel()
         {
             CreatedOn = DateTime.UtcNow;
+            AccountId = Guid.NewGuid();
+            License = Guid.NewGuid();
         }
     }
 }

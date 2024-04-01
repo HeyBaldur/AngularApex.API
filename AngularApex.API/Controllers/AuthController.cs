@@ -44,8 +44,7 @@ namespace AngularApex.API.Controllers
             }
             else
             {
-                var result = await _identityService.RegisterUserAsync(model);
-                return Ok(result);
+                return Ok(await _identityService.RegisterUserAsync(model));
             }
         }
 

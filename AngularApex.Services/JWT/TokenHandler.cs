@@ -16,7 +16,11 @@ namespace AngularApex.Services.JWT
             _iConfiguration = iConfiguration;
         }
 
-        public string GenerateToken(int userId, string emailAddress)
+        public string GenerateToken(
+            int userId, 
+            string emailAddress, 
+            string accountId, 
+            string license)
         {
             // Set claims
             var claims = new[]
@@ -24,6 +28,8 @@ namespace AngularApex.Services.JWT
                 new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
                 new Claim(ClaimTypes.Email, emailAddress),
                 new Claim("id", userId.ToString()),
+                new Claim(nameof(accountId), accountId),
+                new Claim(nameof(license), license),
                 new Claim("issuerUrl", "http://localhost:4200/"), // Change this URL for PROD.
             };
 

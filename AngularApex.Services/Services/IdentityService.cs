@@ -49,7 +49,9 @@ namespace AngularApex.Services.Services
             _logger.LogInformation("Generate access token");
             var token = _tokenHandler.GenerateToken(
                 user.Id,
-                user.Email);
+                user.Email,
+                user.AccountId.ToString(),
+                user.License.ToString());
 
             // Return token object
             return new TokenDto
