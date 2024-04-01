@@ -11,5 +11,17 @@ namespace AngularApex.Data
         public DbSet<UserRolesModel> UserRoles { get; set; }
         public DbSet<UserPermissionsModel> UserPermissions { get; set; }
         public DbSet<UserRoleAssigmentModel> UserRoleAssigments { get; set; }
+
+        // CRM Props
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Note> Notes { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Opportunity> Opportunities { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Lead> Leads { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

@@ -11,8 +11,8 @@
         /// <param name="license"></param>
         /// <returns></returns>
         string GenerateToken(
-            int userId, 
-            string emailAddress, 
+            int userId,
+            string emailAddress,
             string accountId,
             string license);
     }

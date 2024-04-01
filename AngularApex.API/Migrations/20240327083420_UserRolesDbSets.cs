@@ -22,7 +22,7 @@ namespace AngularApex.API.Migrations
                         column: x => x.UserModelId,
                         principalTable: "UserAccounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,7 +57,7 @@ namespace AngularApex.API.Migrations
                         column: x => x.UserRoleId,
                         principalTable: "UserRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

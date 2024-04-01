@@ -17,9 +17,9 @@ namespace AngularApex.Services.JWT
         }
 
         public string GenerateToken(
-            int userId, 
-            string emailAddress, 
-            string accountId, 
+            int userId,
+            string emailAddress,
+            string accountId,
             string license)
         {
             // Set claims

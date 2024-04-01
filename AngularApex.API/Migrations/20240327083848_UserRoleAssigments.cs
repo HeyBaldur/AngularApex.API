@@ -24,7 +24,7 @@ namespace AngularApex.API.Migrations
                 column: "UserRoleId",
                 principalTable: "UserRoles",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
