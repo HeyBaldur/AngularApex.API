@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace AngularApex.Data.Models
@@ -23,7 +24,7 @@ namespace AngularApex.Data.Models
         public DateTime LastUpdated { get; set; }
         public Guid AccountId { get; set; }
         public Guid License { get; set; }
-        public string AccountsAssigned { get; set; } // We save this as a comma separated values.
+        public virtual List<Account> AccountsAssigned { get; set; } // We save this as a comma separated values.
 
         public RegisterUserModel()
         {

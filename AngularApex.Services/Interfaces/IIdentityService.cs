@@ -3,7 +3,7 @@ using AngularApex.Data.DTOs;
 using AngularApex.Data.Models;
 using System.Threading.Tasks;
 
-namespace AngularApex.Services.Services
+namespace AngularApex.Services.Interfaces
 {
     public interface IIdentityService
     {
