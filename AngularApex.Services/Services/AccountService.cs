@@ -46,7 +46,9 @@ namespace AngularApex.Services.Services
             }
         }
 
+        #region Private members
         private async Task<bool> AccountExistAsync(Guid id) =>
             await _dataContext.Accounts.Where(x => x.Identificator == id).AnyAsync();
+        #endregion
     }
 }

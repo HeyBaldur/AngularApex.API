@@ -15,6 +15,7 @@ namespace AngularApex.API.Utils
         public AutoMapperProfiles()
         {
             CreateMap<RegisterUserModel, UserAccountDto>().ReverseMap();
+            CreateMap<RegisterUserModel, RegisterUserModelRequest>().ReverseMap();
         }
     }
 }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApex.Services", "Ang
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularApex.Data", "AngularApex.Data\AngularApex.Data.csproj", "{E374FC97-D60E-4B13-BF62-C2346921739D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApexFluentValidators", "ApexFluentValidators\ApexFluentValidators.csproj", "{22EDEB54-7C55-4D15-85DF-1C7FBF4697DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E374FC97-D60E-4B13-BF62-C2346921739D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E374FC97-D60E-4B13-BF62-C2346921739D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E374FC97-D60E-4B13-BF62-C2346921739D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22EDEB54-7C55-4D15-85DF-1C7FBF4697DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EDEB54-7C55-4D15-85DF-1C7FBF4697DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EDEB54-7C55-4D15-85DF-1C7FBF4697DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EDEB54-7C55-4D15-85DF-1C7FBF4697DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
