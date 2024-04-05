@@ -12,7 +12,7 @@ namespace AngularApex.Services.Interfaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<UserAccountDto> RegisterUserAsync(RegisterUserModel model);
+        Task<UserAccountDto> RegisterUserAsync(RegisterUserModelRequest model);
 
         /// <summary>
         /// Log in a user.

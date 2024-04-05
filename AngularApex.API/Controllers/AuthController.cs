@@ -36,7 +36,7 @@ namespace AngularApex.API.Controllers
             Description = "Register a new user",
             Summary = "Create account")]
         [HttpPost]
-        public async Task<IActionResult> CreateAccount(RegisterUserModel model)
+        public async Task<IActionResult> CreateAccount(RegisterUserModelRequest model)
         {
             if (!ModelState.IsValid)
             {

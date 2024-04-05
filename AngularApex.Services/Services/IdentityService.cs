@@ -5,7 +5,9 @@ using AngularApex.Data.Models;
 using AngularApex.Services.Interfaces;
 using AngularApex.Services.JWT;
 using AngularApex.Services.PasswordHandler;
+using ApexFluentValidators.Validators;
 using AutoMapper;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -39,6 +41,10 @@ namespace AngularApex.Services.Services
 
         public async Task<TokenDto> LoginUserAsync(LoginUserModel model)
         {
+            // Validate models are correct
+            LoginUserModelValidator validator = new();
+            ValidationResult result = validator.Validate(model);
+
             // Validate if user exists in the DB.
             RegisterUserModel user = await _dataContext.UserAccounts
                 .Where(x => x.Email == model.Email)
@@ -66,10 +72,14 @@ namespace AngularApex.Services.Services
             };
         }
 
-        public async Task<UserAccountDto> RegisterUserAsync(RegisterUserModel model)
+        public async Task<UserAccountDto> RegisterUserAsync(RegisterUserModelRequest model)
         {
             try
             {
+                // Validate models are correct
+                RegisterUserModelValidator validator = new();
+                ValidationResult result = validator.Validate(model);
+
                 // Check if email already exists
                 bool emailExists = await _dataContext.UserAccounts
                     .AnyAsync(x => x.Email == model.Email);
@@ -80,19 +90,22 @@ namespace AngularApex.Services.Services
                     return null;
                 }
 
+                // Map user request
+                var user = _mapper.Map<RegisterUserModel>(model);
+
                 // Hash the password
                 PasswordHash.CreatePasswordHash(model.Password, out byte[] passwordHash, out byte[] passwordSalt);
-                model.PasswordHash = passwordHash;
-                model.PasswordSalt = passwordSalt;
-                model.Password = $"{passwordHash}/{passwordSalt}";
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+                user.Password = $"{passwordHash}/{passwordSalt}";
 
                 // Save user account to database
-                await _dataContext.UserAccounts.AddAsync(model);
+                await _dataContext.UserAccounts.AddAsync(user);
                 await _dataContext.SaveChangesAsync();
 
                 // Map and return the user account DTO
                 _logger.LogInformation($"User has been created.");
-                return _mapper.Map<UserAccountDto>(model);
+                return _mapper.Map<UserAccountDto>(user);
             }
             catch (Exception ex)
             {
